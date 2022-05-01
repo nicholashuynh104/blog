@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class PostController extends Controller
+class AdminPostController extends Controller
 {
     public function index()
     {
@@ -39,7 +39,7 @@ class PostController extends Controller
                 'cat_id' => ['required'],
                 'image' => ['required'],
             ]);
-    
+
             if ($validation->fails()) {
                 return response()->json([
                     'success' => false,
@@ -99,7 +99,7 @@ class PostController extends Controller
                 'description' => ['required', 'string', 'max:100', 'min:10'],
                 'cat_id' => ['required'],
             ]);
-    
+
             if ($validation->fails()) {
                 return response()->json([
                     'success' => false,

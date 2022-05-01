@@ -38,8 +38,6 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import { createToast } from 'mosha-vue-toastify';
-import 'mosha-vue-toastify/dist/style.css';
 
 export default {
   name: "AdminIndexPage",
@@ -47,24 +45,12 @@ export default {
     username: "",
     password: "",
   }),
-  // setup () {
-  //   const toast = () => {
-  //       createToast('Wow, easy')
-  //   }
-  //   return { toast }
-  // },
   methods: {
     ...mapActions(['adminLogins']),
     login() {
       if (!this.username || !this.password) {
-        const toast = () => {
-        createToast('Wow, easy')
-      }
-      return { toast }
-      }
+
     }
   }
-};
+}
 </script>
-<style la>
-</style>
