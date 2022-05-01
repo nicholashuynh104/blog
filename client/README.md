@@ -1,5 +1,3 @@
-# blog
-
 # frontend
 
 ## Build Setup

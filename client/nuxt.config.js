@@ -1,10 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
-
 export default {
+   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - Mitech Blog App',
-    title: 'Mitech',
+    title: 'frontend',
     htmlAttrs: {
       lang: 'en'
     },
@@ -21,7 +22,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/style.css'
+    '~/assets/style.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -41,7 +42,21 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
   ],
+
+  toast: {
+    position: 'top-right',
+    // register: [ // Register custom toasts
+    //   {
+    //     name: 'my-error',
+    //     message: 'Oops...Something went wrong',
+    //     options: {
+    //       type: 'error'
+    //     }
+    //   }
+    // ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
