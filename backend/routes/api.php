@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminSubscribeController;
@@ -15,8 +15,8 @@ use App\Http\Controllers\Frontend\SubscribeController;
 use App\Http\Controllers\Frontend\CommentController;
 
 Route::post('/login', [AdminAuth::class, 'login']);
-Route::middleware('auth:sanctum')->group(function () {
 
+Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/admin')->group(function(){
         //Auth
         Route::get('/admin', [AdminAuth::class, 'admin']);
@@ -30,12 +30,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/category/{search}', [CategoryController::class, 'search']);
 
         //api for post
-        Route::get('/posts', [PostController::class, 'index']);
-        Route::post('/posts', [PostController::class, 'store']);
-        Route::put('/posts/{id}', [PostController::class, 'edit']);
-        Route::post('/posts/{id}', [PostController::class, 'update']);
-        Route::delete('/posts/{id}', [PostController::class, 'delete']);
-        Route::get('/posts/{search}', [PostController::class, 'search']);
+        Route::get('/posts', [AdminPostController::class, 'index']);
+        Route::post('/posts', [AdminPostController::class, 'store']);
+        Route::put('/posts/{id}', [AdminPostController::class, 'edit']);
+        Route::post('/posts/{id}', [AdminPostController::class, 'update']);
+        Route::delete('/posts/{id}', [AdminPostController::class, 'delete']);
+        Route::get('/posts/{search}', [AdminPostController::class, 'search']);
 
         // Setting routes
         Route::get('/setting', [SettingController::class, 'index']);

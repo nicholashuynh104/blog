@@ -1,33 +1,32 @@
 <template>
   <div>
     <NavbarVue />
-    <HeroVue />
-    <PopularPostVue />
-    <!-- <LastestPostVue /> -->
+    <AllPostHeroVue />
+    <AllPostVue />
     <FooterVue />
   </div>
 </template>
 
 <script>
+import AllPostVue from "../components/front/AllPost.vue";
+import AllPostHeroVue from "../components/front/AllPostHero.vue";
 import FooterVue from "../components/front/Footer.vue";
 import HeroVue from "../components/front/Hero.vue";
-// import LastestPostVue from "../components/front/LastestPost.vue";
 import NavbarVue from "../components/front/Navbar.vue";
-import PopularPostVue from "../components/front/PopularPost.vue";
 
 export default {
-  name: "IndexPage",
+  name: "BlogPage",
   head(){
     return{
-      title:'Home',
+      title:'Blog',
     }
   },
   components: {
     NavbarVue,
     HeroVue,
-    PopularPostVue,
-    // LastestPostVue,
     FooterVue,
+    AllPostVue,
+    AllPostHeroVue,
   },
 };
 </script>

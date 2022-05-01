@@ -22,7 +22,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/style.css',
+    '~/assets/style.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -47,15 +47,6 @@ export default {
 
   toast: {
     position: 'top-right',
-    // register: [ // Register custom toasts
-    //   {
-    //     name: 'my-error',
-    //     message: 'Oops...Something went wrong',
-    //     options: {
-    //       type: 'error'
-    //     }
-    //   }
-    // ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
