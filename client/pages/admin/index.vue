@@ -49,8 +49,19 @@ export default {
     ...mapActions(['adminLogins']),
     login() {
       if (!this.username || !this.password) {
-
+        this.$toast.show('User Name and Password can not empty!', {
+            type: "danger",
+            duration: 600,
+            position: "bottom-right"
+        });
+      } else {
+        const formData = {
+          name: this.username,
+          password: this.password,
+        };
+        this.adminLogins(formData)
     }
   }
+}
 }
 </script>

@@ -96,11 +96,6 @@ export default {
     isloading: false,
   }),
   async mounted() {
-    const config = {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
     this.isloading = true;
   }
 }

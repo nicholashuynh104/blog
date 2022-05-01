@@ -19,7 +19,7 @@ Route::post('/login', [AdminAuth::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/admin')->group(function(){
         //Auth
-        Route::get('/admin', [AdminAuth::class, 'admin']);
+        Route::get('/info', [AdminAuth::class, 'admin']);
         Route::post('/logout', [AdminAuth::class, 'logout']);
 
         Route::get('/categories', [CategoryController::class, 'index']);
