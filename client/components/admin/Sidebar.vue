@@ -29,12 +29,15 @@
       <v-toolbar-title v-text="title" />
       <v-spacer></v-spacer>
       <v-toolbar-title v-text="admin" />
+      <v-toolbar-title v-text="$store.state.admins.name" />
       <v-btn color="error" class="ml-3" text @click="logout">Logout</v-btn>
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
     name: "SideBarComp",
   data() {
@@ -90,5 +93,11 @@ export default {
       title: "Mitech Blog",
     };
   },
+  methods: {
+    ...mapActions(['adminLogout']),
+    logout() {
+      this.adminLogout();
+    }
+  }
 }
 </script>
