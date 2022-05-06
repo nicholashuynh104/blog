@@ -33,12 +33,14 @@
                 </thead>
                 <tbody>
                   <tr
+                    v-for="(category, index) in $store.state.category"
+                    :key="index"
                   >
-                    <td class="text-left">1</td>
-                    <td class="text-left">category name</td>
-                    <td class="text-left">1</td>
+                    <td class="text-left">{{index}}</td>
+                    <td class="text-left">{{category.category_name}}</td>
+                    <td class="text-left">{{category.status == 1 ? "Active" : "Deactive"}}</td>
                     <td class="text-left">
-                      <nuxt-link :to="`/admin/update-category/`">
+                      <nuxt-link :to="`/admin/update-category/${category.id}`">
                         <v-btn
                           text
                           class="ma-2"
@@ -57,7 +59,9 @@
                         variant="text"
                         color="red"
                       >
-                        <v-icon color="red darken-3"> mdi-delete</v-icon>
+                        <v-icon color="red darken-3" 
+                          @click="delCategory(category.id)"
+                        > mdi-delete</v-icon>
                       </v-btn>
                     </td>
                   </tr>
@@ -72,6 +76,9 @@
 </template>
 <script>
 import SidebarVue from "../../components/admin/Sidebar.vue";
+import { mapActions } from "vuex";
+import axios from "axios";
+
 export default {
   name: "CategoryPage",
   data: () => ({
@@ -81,15 +88,24 @@ export default {
   components: {
     SidebarVue,
   },
+  methods: {
+    ...mapActions(["getCategories"]),
+    ...mapActions(["deleteCategory"]),
+    delCategory(id) {
+      this.deleteCategory(id);
+      this.getCategories();
+    }
+  },
   async mounted() {
+    await this.getCategories();
     const config = {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
+        "Authorization": "Bearer " + localStorage.getItem("token"),
+      }
     };
-    this.isloading = true;
-
-  },
+    const categories = await axios.get(`http://localhost:8000/api/admin/totalCategory`,config);
+    this.totalCategory = categories.data.category;
+  }
 };
 </script>
 <style>

@@ -71,27 +71,6 @@ export default {
   data: () => ({
     email: "",
   }),
-  methods: {
-    ...mapActions(["addSubscribe"]),
-    ...mapActions(["getSettings"]),
-
-    async subscribe() {
-      if (!this.email) {
-        this.$toast.show("Please fill the field", {
-          type: "error",
-        });
-      } else {
-        const data = {
-          email: this.email,
-        };
-        await this.addSubscribe(data);
-        this.email = "";
-      }
-    },
-  },
-  mounted() {
-    this.getSettings();
-  },
 };
 </script>
 <style>

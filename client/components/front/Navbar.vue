@@ -27,12 +27,6 @@ export default {
   data: () => ({
     nav: false,
   }),
-  methods: {
-    ...mapActions(["getSettings"]),
-  },
-  mounted() {
-    this.getSettings();
-  },
 };
 </script>
 <style >

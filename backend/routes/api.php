@@ -22,12 +22,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/info', [AdminAuth::class, 'admin']);
         Route::post('/logout', [AdminAuth::class, 'logout']);
 
+        // Category routes
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::post('/category', [CategoryController::class, 'store']);
-        Route::patch('/category/{id}', [CategoryController::class, 'edit']);
+        Route::put('/category/{id}', [CategoryController::class, 'edit']);
         Route::post('/category/{id}', [CategoryController::class, 'update']);
         Route::delete('/category/{id}', [CategoryController::class, 'delete']);
         Route::get('/category/{search}', [CategoryController::class, 'search']);
+        Route::get('/totalCategory', [CategoryController::class, 'getTotalCategory']);
 
         //api for post
         Route::get('/posts', [AdminPostController::class, 'index']);

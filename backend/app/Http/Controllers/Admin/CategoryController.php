@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Exception;
@@ -49,7 +50,7 @@ class CategoryController extends Controller
     {
         try {
             $validation = Validator::make($request->all(),[
-                'category_name' => ['required','string','max:20','min:10','unique:categories']
+                'category_name' => ['required','string','max:20','min:5','unique:categories']
             ]);
             if ($validation->fails()) {
                 return response()->json([
@@ -85,7 +86,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         try {
             return response()->json([
-                'success' => false,
+                'success' => true,
                 'category' => $category,
             ]);
 
