@@ -20,7 +20,7 @@
                 </v-text-field>
 
                 <v-btn color="error" type="submit" class="login__btn">
-                  save</v-btn
+                  {{$store.state.isloading ? 'Saving' : 'Save'}}</v-btn
                 >
               </form>
             </v-card-subtitle>
@@ -42,6 +42,23 @@ export default {
   data: () => ({
     category_name: "",
   }),
+  methods: {
+    ...mapActions(['createCategory']),
+    addCategory() {
+      if (!this.category_name) {
+        this.$toast.show('Please fill the filed', {
+            type: "error",
+            duration: 600,
+            position: "bottom-right"
+        });
+      } else {
+        const data = {
+          category_name : this.category_name
+        };
+        this.createCategory(data);
+      }
+    }
+  },
 };
 </script>
 <style>

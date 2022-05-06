@@ -47,12 +47,6 @@
 import { mapActions } from "vuex";
 export default {
   name: "PopulerCamp",
-  methods: {
-    ...mapActions(["getPopularPost"]),
-  },
-  mounted() {
-    this.getPopularPost();
-  },
 };
 </script>
 <style>
